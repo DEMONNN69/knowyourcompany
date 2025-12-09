@@ -1,0 +1,19 @@
+# Ignore all log files
+*.log
+__pycache__/
+
+# Ignore the 'build' directory
+build/
+
+# Ignore a specific temporary file
+temp.txt
+
+# Ignore virtual environment directories
+venv/
+.venv/
+
+# Ignore macOS-specific files
+.DS_Store
+
+# Exclude a specific file from being ignored (even if it matches a pattern)
+!important_file.log
