@@ -137,16 +137,14 @@ async def fetch_all_signals(request: CheckCompanyRequest) -> list[SourceSignal]:
     # Prepare tasks for parallel execution
     tasks = []
     
-    # Always include Reddit and AmbitionBox
+    # Always include Reddit, Glassdoor, and AmbitionBox
     tasks.append(("reddit", fetch_reddit_signals(request.name)))
+    tasks.append(("glassdoor", fetch_glassdoor_signals(request.name)))
     tasks.append(("ambitionbox", fetch_ambitionbox_signals(request.name)))
     
     # Include optional connectors
     tasks.append(("x", fetch_x_signals(request.name)))
     tasks.append(("linkedin", fetch_linkedin_signals(request.name)))
-    
-    # TODO: Glassdoor requires company_id - need mapping service
-    # For now, skip or implement with search-first logic
     
     # Execute all tasks concurrently
     results = await asyncio.gather(
