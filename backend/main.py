@@ -7,14 +7,11 @@ import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
+from app.core.logging import setup_logging
 from app.api.routes import router
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
-logger = logging.getLogger(__name__)
+# Configure structured logging
+logger = setup_logging(logging.INFO)
 
 # Create FastAPI app
 app = FastAPI(

@@ -109,4 +109,4 @@ if __name__ == "__main__":
         asyncio.run(clear_specific_company(company))
     else:
         # Clear everything
-        asyncio.run(clear_everything())
+        asyncio.run(clear_everything()) 
